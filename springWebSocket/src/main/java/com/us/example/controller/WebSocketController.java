@@ -41,7 +41,7 @@ public class WebSocketController {
     public String chat(){
         return  "chat";
     }
-    //http://localhost:8080/ws
+    //http://localhost:8090/ws
     @MessageMapping("/welcome")//浏览器发送请求通过@messageMapping 映射/welcome 这个地址。
     @SendTo("/topic/getResponse")//服务器端有消息时,会订阅@SendTo 中的路径的浏览器发送消息。
     public Response say(Message message) throws Exception {
@@ -49,7 +49,7 @@ public class WebSocketController {
         return new Response("Welcome, " + message.getName() + "!");
     }
 
-    //http://localhost:8080/Welcome1
+    //http://localhost:8090/Welcome1
     @RequestMapping("/Welcome1")
     @ResponseBody
     public String say2()throws Exception
@@ -74,7 +74,7 @@ public class WebSocketController {
                     "/queue/notifications", principal.getName() + "-send:"
                             + message.getName());
             /**
-             * 72 行操作相等于 
+             * 72 行操作相等于
              * messagingTemplate.convertAndSend("/user/abel/queue/notifications",principal.getName() + "-send:"
              + message.getName());
              */
